@@ -1,10 +1,12 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 import { ENV_CONFIG } from "./config/envConfig.js";
 
 const app = express();
 
-const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.get("/api/health", (req, res) => {
   res.send("Hello World");
